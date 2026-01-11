@@ -26,7 +26,20 @@
 		A2000001000F0013 /* PracticeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000F0014 /* PracticeViewModel.swift */; };
 		A2000001000F0015 /* ProgressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000F0016 /* ProgressViewModel.swift */; };
 		A2000001000F0017 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000F0018 /* SettingsViewModel.swift */; };
+		A3000001000F0001 /* MorseSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000001000F0002 /* MorseSymbol.swift */; };
+		A3000001000F0003 /* MorseAlphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000001000F0004 /* MorseAlphabet.swift */; };
+		A3000001000F0005 /* MorseAlphabetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000001000F0006 /* MorseAlphabetTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A3000001000F0010 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A1000001229F0300 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A1000001229F0100;
+			remoteInfo = MorseTap;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A1000001229F0002 /* MorseTapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseTapApp.swift; sourceTree = "<group>"; };
@@ -49,10 +62,21 @@
 		A2000001000F0014 /* PracticeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeViewModel.swift; sourceTree = "<group>"; };
 		A2000001000F0016 /* ProgressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewModel.swift; sourceTree = "<group>"; };
 		A2000001000F0018 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A3000001000F0002 /* MorseSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseSymbol.swift; sourceTree = "<group>"; };
+		A3000001000F0004 /* MorseAlphabet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseAlphabet.swift; sourceTree = "<group>"; };
+		A3000001000F0006 /* MorseAlphabetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseAlphabetTests.swift; sourceTree = "<group>"; };
+		A3000001000F0008 /* MorseTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MorseTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A1000001229F0020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3000001000F0020 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -66,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				A1000001229F0031 /* MorseTap */,
+				A3000001000F0030 /* MorseTapTests */,
 				A1000001229F0040 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				A1000001229F0010 /* MorseTap.app */,
+				A3000001000F0008 /* MorseTapTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,6 +211,7 @@
 				A2000001000F0006 /* Difficulty.swift */,
 				A2000001000F0008 /* Exercise.swift */,
 				A2000001000F000A /* Statistics.swift */,
+				A3000001000F0002 /* MorseSymbol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +222,7 @@
 				A2000001000F000C /* MorseInputProcessing.swift */,
 				A2000001000F000E /* ExerciseGenerating.swift */,
 				A2000001000F0010 /* ProgressTracking.swift */,
+				A3000001000F0004 /* MorseAlphabet.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -256,6 +284,22 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		A3000001000F0030 /* MorseTapTests */ = {
+			isa = PBXGroup;
+			children = (
+				A3000001000F0031 /* Domain */,
+			);
+			path = MorseTapTests;
+			sourceTree = "<group>";
+		};
+		A3000001000F0031 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A3000001000F0006 /* MorseAlphabetTests.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,6 +320,24 @@
 			productReference = A1000001229F0010 /* MorseTap.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A3000001000F0100 /* MorseTapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3000001000F0200 /* Build configuration list for PBXNativeTarget "MorseTapTests" */;
+			buildPhases = (
+				A3000001000F0101 /* Sources */,
+				A3000001000F0020 /* Frameworks */,
+				A3000001000F0102 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3000001000F0011 /* PBXTargetDependency */,
+			);
+			name = MorseTapTests;
+			productName = MorseTapTests;
+			productReference = A3000001000F0008 /* MorseTapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -288,6 +350,10 @@
 				TargetAttributes = {
 					A1000001229F0100 = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					A3000001000F0100 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = A1000001229F0100;
 					};
 				};
 			};
@@ -305,6 +371,7 @@
 			projectRoot = "";
 			targets = (
 				A1000001229F0100 /* MorseTap */,
+				A3000001000F0100 /* MorseTapTests */,
 			);
 		};
 /* End PBXProject section */
@@ -315,6 +382,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1000001229F000D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3000001000F0102 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,10 +417,28 @@
 				A2000001000F0013 /* PracticeViewModel.swift in Sources */,
 				A2000001000F0015 /* ProgressViewModel.swift in Sources */,
 				A2000001000F0017 /* SettingsViewModel.swift in Sources */,
+				A3000001000F0001 /* MorseSymbol.swift in Sources */,
+				A3000001000F0003 /* MorseAlphabet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3000001000F0101 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3000001000F0005 /* MorseAlphabetTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A3000001000F0011 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A1000001229F0100 /* MorseTap */;
+			targetProxy = A3000001000F0010 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A1000001229F0501 /* Debug */ = {
@@ -528,6 +620,44 @@
 			};
 			name = Release;
 		};
+		A3000001000F0503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T4KNH7V9U8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morsetap.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MorseTap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MorseTap";
+			};
+			name = Debug;
+		};
+		A3000001000F0504 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T4KNH7V9U8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.morsetap.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MorseTap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MorseTap";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -545,6 +675,15 @@
 			buildConfigurations = (
 				A1000001229F0501 /* Debug */,
 				A1000001229F0502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3000001000F0200 /* Build configuration list for PBXNativeTarget "MorseTapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3000001000F0503 /* Debug */,
+				A3000001000F0504 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
