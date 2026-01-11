@@ -1,0 +1,144 @@
+﻿---
+description: Rules for writing task prompts in docs/task-prompt
+globs:
+alwaysApply: false
+---
+
+The rules below apply only when preparing docs/task-prompt.
+
+## Terms
+
+- When writing a task statement, always use the official names of modules, services, and components exactly as described in the relevant AGENTS.md. It is forbidden to invent abbreviations or alternative naming.
+
+## Task statement structure
+
+- Changing the order of sections is forbidden; every section is required.
+
+1. H1 title — reflects the essence of the proposed changes.
+2. Affected modules — list relative paths, components, and types in backticks (MorseCode/...).
+3. Goal — 1–2 sentences describing the task and the expected effect.
+4. Dependencies — list related tasks, branches, or blocking changes.
+5. Execution plan — a mandatory TODO list with a strict step order for AI: (1) implement the requested changes; (2) type checks and build verification; (3) post-implementation verification; (4) quality checks; (5) documentation update; (6) finalization.
+6. Pre-implementation code preparation — environment prep steps before work; no requirements about VCS or branches.
+7. Terms/Context — definitions of key entities; if none, write None.
+8. Block requirements — create sub-items for the affected iOS modules/layers: Domain Services, Data Repositories, ViewModels, Views, Shared Components, Utilities, Models/Types; finish the section with Refactoring, NFRs blocks.
+9. Acceptance criteria — a list of checks that confirm the task is done.
+10. Post-implementation verification — steps to verify build, simulator run, and SwiftUI previews.
+11. Documentation update — rules for updating README.md, the root AGENTS.md, and module AGENTS.md.
+12. Post-implementation code preparation — final steps after all checks.
+
+- The Execution plan section must always appear before Pre-implementation code preparation.
+- The Post-implementation code preparation section must be last and completes the document.
+
+## Formatting rules
+
+- Use Markdown with headings and numbered lists where it improves readability.
+- Format every section and sub-item using Markdown headings with explicit markers #, ##, ###, etc.; level 2 and level 3 headings must be marked explicitly.
+- Do not insert code snippets or links to specific lines; describe actions at the level of files, types, and functions.
+- If a section requires no changes, include the line No changes.
+- Keep a consistent style and do not duplicate semantic blocks within the task statement.
+
+## Prohibitions and notes
+
+- Follow project rules from AGENTS.md.
+- When adding new function parameters, make them optional with defaults and update all call sites.
+- Follow MVVM architecture: Views → ViewModels → Domain Services → Data Repositories.
+
+## Additional content requirements
+
+### Description accuracy
+
+- Specify concrete files, paths, Views, ViewModels, Services, and functions in backticks.
+- For Swift types and protocols, specify the exact names and files.
+- Use the project unified utilities and services (Shared/Utilities, Shared/Components).
+- Before adding new code, check the relevant layer/module AGENTS.md to avoid duplicating what already exists and to follow existing rules.
+
+### Domain Service requirements
+
+- For each service method, record the input parameters, return type, and async/throwing behavior.
+- When adding/changing service methods, always define proper Swift protocols.
+- Update relevant sections of README.md when making significant changes to public APIs.
+
+### Typing and compatibility
+
+- All new functions, Views, and services must be strictly typed.
+- Avoid `Any`; use proper Swift generics or concrete types.
+- When changing types, check all usage sites.
+- Use Swift Concurrency patterns (`async/await`, `Task`, `@MainActor`).
+
+### Code style and quality
+
+- Follow rules from AGENTS.md (the Code quality and style section). Do not duplicate them in the task statement.
+- Use SwiftLint for code style enforcement.
+- New Views: SwiftUI with proper state management; when modifying existing Views, bring them to the same requirements.
+- Architecture: create new components following Clean Architecture with MVVM; refactor existing components when working with them.
+
+### Architectural changes
+
+- When changing signatures, update all call sites and ensure backward compatibility.
+- Make new parameters optional with default values.
+- Extract repeated logic into shared services and utilities.
+- Maintain separation: UI ↔ Business Logic ↔ Data.
+
+### Quality checks
+
+- Before finalization, run `xcodebuild build` or build in Xcode to verify the build.
+- Swift type checking: use Xcode's built-in checks.
+- Linting — run SwiftLint according to AGENTS.md.
+- Use Xcode's Find in Project to search for duplicated code.
+- Mandatory steps after any refactor: remove unused functions and imports, update call sites after signature changes.
+
+### Carry over technical details from meta-prompt
+
+- If the related meta-prompt explicitly contains technical details (configs, API parameters, Swift protocols, data schemas, etc.), copy them into the relevant sections of the task-prompt fully and without shortening; this information is considered critical.
+- Task-prompt is the single source of technical truth: do not reference the meta-prompt or other statements; everything needed must be described directly in the task-prompt.
+
+### Acceptance criteria
+
+- Create a verifiable checklist; include a reference to following AGENTS.md rules.
+- Verify functionality in Simulator and on device if possible.
+- Verify SwiftUI previews render correctly.
+
+## Task execution rules for AI
+
+- Treat the statement as a full pipeline: from environment preparation to the final handoff for review.
+- If the statement contains an Execution plan section, create a TODO with all steps from the plan and follow them sequentially, strictly in the given order.
+- If the section is missing, form a plan yourself based on requirements and include in TODO: implementation, Swift type checks, post-implementation verification (build + simulator), quality checks (SwiftLint), documentation update, and finalization, strictly following the order.
+- Post-implementation verification and documentation update are mandatory and must be performed immediately after making code changes.
+- The TODO list must reflect the technical changes from Block requirements, type checks, running build and simulator, checking console output, linting checks, documentation updates, and final actions.
+- The task is considered complete only after all plan items are closed and final materials for review are prepared.
+
+## Checklists
+
+### Author self-check
+
+- The document structure matches the Task statement structure section, including the order of key sections.
+- The execution plan covers the full cycle: preparation → implementation → type checks → post-implementation verification → quality → documentation → finalization.
+- Block requirements list all affected iOS layers/modules and include Refactoring, NFRs blocks.
+- Swift type checking is included in the plan; SwiftLint is run.
+- All paths (MorseCode/...) are correctly formatted, there is no duplication, and if there are no changes, No changes. is used.
+
+### Reviewer checklist
+
+- Headings and section order match requirements; the plan is detailed and executable.
+- All references to files, Views, ViewModels, and functions are valid and wrapped in backticks; requirements are verifiable and unambiguous.
+- All new functions/Views are strictly typed; types are aligned with existing protocols.
+- Documentation (README.md, AGENTS.md) is updated for significant changes; post-implementation verification and code quality instructions are executable.
+- The codebase matches the quality rules from AGENTS.md (formatting, style, typing).
+
+## Debugging and diagnostics architecture
+
+### Logging rules during development:
+
+- Add debug logs temporarily via `print()` or `os_log` with the `[DEBUG]` prefix.
+- Before merge, remove debug print statements.
+
+### General diagnostic principles:
+
+1. Check configuration: are all required settings in place (Info.plist, entitlements).
+2. Check parameters: are properties passed correctly in Views, are service call parameters correct.
+3. Check wiring: are dependencies between modules configured correctly, are imports correct.
+4. Check Xcode console: are there errors, warnings, runtime issues.
+5. Check data flow: do SwiftData operations work correctly, is UserDefaults accessed properly.
+6. Check utilities: are the project unified services used (Shared/Utilities, Shared/Components).
+7. Check types: does the Swift build pass without errors.

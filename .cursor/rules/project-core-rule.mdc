@@ -1,0 +1,16 @@
+﻿---
+alwaysApply: true
+---
+
+1. Every important module has an AGENTS.md file that describes the specific module.
+2. Always add to the context all AGENTS.md files from the affected modules.
+3. Always add to the context the AGENTS.md file from the project root.
+4. Do not add comments that narrate your actions, change history, or state the obvious. Write comments only to clarify non-obvious rationale, invariants, edge cases, important constraints, and performance/security caveats — anything that genuinely speeds up code analysis and maintenance.
+5. Store every meta task description as a separate file under docs/meta-prompt/. Describe the problem statement, goals, and expected outcomes succinctly, avoiding implementation details; include links to related requirements or artefacts when available.
+6. Derive each task-prompt from its meta-prompt and format it strictly per /.cursor/rules/create-task-prompt.mdc; keep task-prompt files in docs/task-prompt/, align their numbering with the source meta files, and update them when requirements evolve.
+7. Do not create meta-prompt or task-prompt files unless the task explicitly requires generating them.
+8. When a task explicitly limits work to preparing a meta-prompt or task-prompt, do not modify application code, components, styles, or configuration until a separate request allows it.
+9. Do not create new AGENTS.md files unless the task explicitly requires generating them.
+10. Follow MVVM architecture: Views should only handle UI, ViewModels contain presentation logic, Domain layer contains business logic.
+11. Use Swift Concurrency (async/await) for asynchronous operations; avoid callbacks and Combine unless necessary.
+12. All SwiftUI Views must have previews for development and testing.

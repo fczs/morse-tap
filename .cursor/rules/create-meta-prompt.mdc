@@ -1,0 +1,110 @@
+﻿---
+description: Rules for preparing a business meta-prompt for the docs/meta-prompt/ directory
+globs: docs/meta-prompt/**
+alwaysApply: false
+---
+
+The rules below apply only when preparing documents in the docs/meta-prompt/ directory.
+
+## Rules (short)
+
+- Write briefly and to the point; size — up to one page (1–2 screens), no fluff.
+- The structure is strictly five sections: Goals, Functional requirements, Out-of-scope, Affected layers and modules, Dependencies and artifacts.
+- Functional requirements describe WHAT changes, broken down by layers and modules strictly according to the root AGENTS.md and the Clean Architecture hierarchy (App → Presentation → Domain → Data → Shared). You may name segments (Views, ViewModels, Services, Repositories, Models) and their public entry points, but without implementation details.
+- Technical details are forbidden: property types, protocols, data schemas, configs, function signatures, algorithms, commands, implementation plans. All of that belongs in the task-prompt.
+- For each meta-prompt, an impact checklist across layers/modules from the root AGENTS.md is required. Build the list dynamically per task; for each item mark Yes/No/Unknown.
+- Input data for a meta-prompt: a short problem statement, a link to the current design (Figma/Sketch), technical specification references.
+- Language: English.
+- File naming: docs/meta-prompt/<slug>.md; use a descriptive slug (e.g., morse-input-button.md).
+- Create a meta-prompt only for an explicit task; review the document when requirements change.
+
+## Meta-prompt structure (strict order)
+
+1. Goals — 1–3 short items: what we get as an outcome.
+2. Functional requirements — only what changes, structured by layers/modules from AGENTS.md. Start with App (if affected), then Presentation (Learn, Practice, Progress, Settings), Domain (Services, UseCases, Models), Data (Repositories, Storage), and Shared (Components, Utilities); you may add subsections for specific modules, but without technical implementation details.
+3. Out-of-scope — what we definitely do not touch (layers, modules, screens).
+4. Affected layers and modules — status for each item from the root AGENTS.md: Yes/No/Unknown. Build the list dynamically.
+5. Dependencies and artifacts — links to requirements, design files, TECH_SPEC.md sections. No retelling, only a list.
+
+## Forbidden
+
+- Drifting into implementation: describing file/component structure, listing properties, internal state, navigation configuration, build parameters, detailed algorithms and step-by-step scenarios. Anything that can be directly transferred into code belongs to the task-prompt.
+- Omitting design/specification links in the Dependencies and artifacts block.
+
+## Allowed (within Functional requirements)
+
+- Naming layers/modules and their public entry points, as well as events and states, to capture scope.
+- Describing UX scenarios at a high level (1–2 sentences), capturing business requirements for states, empty screens, transitions, without listing properties or internal steps.
+
+## Mini-template (strict)
+
+```markdown
+# <Short task title>
+
+## Goals
+
+- <Briefly, what we get as an outcome>
+- <Additional, if needed>
+
+## Functional requirements
+
+### App/
+
+- <For example: add new tab or navigation flow>
+
+### Presentation/<module>
+
+- <Add/change a screen; specify what states/actions are needed>
+
+#### Learn/
+
+- <Changes to symbol list or card screens>
+
+#### Practice/
+
+- <Changes to exercise screens>
+
+#### Progress/
+
+- <Changes to statistics display>
+
+#### Settings/
+
+- <Changes to settings screens>
+
+### Domain/<service>
+
+- <Add/change business logic; specify what operations are needed>
+
+### Data/<repository>
+
+- <Changes to data storage or retrieval>
+
+### Shared/<segment>
+
+- <Specify which components/utilities should appear or change>
+
+## Out-of-scope
+
+- <What we definitely do not touch>
+
+## Affected layers and modules (Yes/No/Unknown)
+
+- App/: <Yes/No/Unknown>
+- Presentation/Learn: <Yes/No/Unknown>
+- Presentation/Practice: <Yes/No/Unknown>
+- Presentation/Progress: <Yes/No/Unknown>
+- Presentation/Settings: <Yes/No/Unknown>
+- Domain/Services: <Yes/No/Unknown>
+- Domain/UseCases: <Yes/No/Unknown>
+- Data/Repositories: <Yes/No/Unknown>
+- Data/Storage: <Yes/No/Unknown>
+- Shared/Components: <Yes/No/Unknown>
+- Shared/Utilities: <Yes/No/Unknown>
+
+## Dependencies and artifacts
+
+- Design: <link to the design or specific frames>
+- TECH_SPEC.md: <section reference>
+- <Other docs: requirements, discussions>
+```
