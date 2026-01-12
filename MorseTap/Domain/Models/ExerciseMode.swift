@@ -1,8 +1,8 @@
 import Foundation
 
-enum ExerciseMode {
-    case codeToWord
-    case codeToSentence
-    case wordToCode
-    case sentenceToCode
+enum ExerciseMode: String, CaseIterable {
+    case codeToWord = "codeToWord"
+    case codeToSentence = "codeToSentence"
+    case wordToCode = "wordToCode"
+    case sentenceToCode = "sentenceToCode"
 }

@@ -33,6 +33,16 @@
 		A4000001000F0003 /* MorseTimingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4000001000F0004 /* MorseTimingConfig.swift */; };
 		A4000001000F0005 /* MorseInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4000001000F0006 /* MorseInputEngine.swift */; };
 		A4000001000F0007 /* MorseInputEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4000001000F0008 /* MorseInputEngineTests.swift */; };
+		A5000001000F0001 /* HapticFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5000001000F0002 /* HapticFeedbackManager.swift */; };
+		A5000001000F0003 /* MorseInputButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5000001000F0004 /* MorseInputButton.swift */; };
+		A5000001000F0005 /* MorseSignalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5000001000F0006 /* MorseSignalsView.swift */; };
+		A5000001000F0007 /* MorseInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5000001000F0008 /* MorseInputView.swift */; };
+		A6000001000F0001 /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F0002 /* UserProfileModel.swift */; };
+		A6000001000F0003 /* SymbolStatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F0004 /* SymbolStatisticsModel.swift */; };
+		A6000001000F0005 /* ExerciseStatisticsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F0006 /* ExerciseStatisticsModel.swift */; };
+		A6000001000F0007 /* UserProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F0008 /* UserProfileRepository.swift */; };
+		A6000001000F0009 /* StatisticsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F000A /* StatisticsRepository.swift */; };
+		A6000001000F000B /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F000C /* RepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +84,16 @@
 		A4000001000F0004 /* MorseTimingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseTimingConfig.swift; sourceTree = "<group>"; };
 		A4000001000F0006 /* MorseInputEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseInputEngine.swift; sourceTree = "<group>"; };
 		A4000001000F0008 /* MorseInputEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseInputEngineTests.swift; sourceTree = "<group>"; };
+		A5000001000F0002 /* HapticFeedbackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackManager.swift; sourceTree = "<group>"; };
+		A5000001000F0004 /* MorseInputButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseInputButton.swift; sourceTree = "<group>"; };
+		A5000001000F0006 /* MorseSignalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseSignalsView.swift; sourceTree = "<group>"; };
+		A5000001000F0008 /* MorseInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseInputView.swift; sourceTree = "<group>"; };
+		A6000001000F0002 /* UserProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
+		A6000001000F0004 /* SymbolStatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolStatisticsModel.swift; sourceTree = "<group>"; };
+		A6000001000F0006 /* ExerciseStatisticsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseStatisticsModel.swift; sourceTree = "<group>"; };
+		A6000001000F0008 /* UserProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRepository.swift; sourceTree = "<group>"; };
+		A6000001000F000A /* StatisticsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsRepository.swift; sourceTree = "<group>"; };
+		A6000001000F000C /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +268,8 @@
 		A1000001229F0070 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				A6000001000F0008 /* UserProfileRepository.swift */,
+				A6000001000F000A /* StatisticsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -255,6 +277,9 @@
 		A1000001229F0071 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				A6000001000F0002 /* UserProfileModel.swift */,
+				A6000001000F0004 /* SymbolStatisticsModel.swift */,
+				A6000001000F0006 /* ExerciseStatisticsModel.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -269,6 +294,9 @@
 		A1000001229F0080 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A5000001000F0004 /* MorseInputButton.swift */,
+				A5000001000F0006 /* MorseSignalsView.swift */,
+				A5000001000F0008 /* MorseInputView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -283,6 +311,7 @@
 		A1000001229F0082 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A5000001000F0002 /* HapticFeedbackManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -299,8 +328,17 @@
 			isa = PBXGroup;
 			children = (
 				A3000001000F0031 /* Domain */,
+				A6000001000F0010 /* Data */,
 			);
 			path = MorseTapTests;
+			sourceTree = "<group>";
+		};
+		A6000001000F0010 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A6000001000F000C /* RepositoryTests.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		A3000001000F0031 /* Domain */ = {
@@ -434,6 +472,15 @@
 				A4000001000F0001 /* MorseInputEvent.swift in Sources */,
 				A4000001000F0003 /* MorseTimingConfig.swift in Sources */,
 				A4000001000F0005 /* MorseInputEngine.swift in Sources */,
+				A5000001000F0001 /* HapticFeedbackManager.swift in Sources */,
+				A5000001000F0003 /* MorseInputButton.swift in Sources */,
+				A5000001000F0005 /* MorseSignalsView.swift in Sources */,
+				A5000001000F0007 /* MorseInputView.swift in Sources */,
+				A6000001000F0001 /* UserProfileModel.swift in Sources */,
+				A6000001000F0003 /* SymbolStatisticsModel.swift in Sources */,
+				A6000001000F0005 /* ExerciseStatisticsModel.swift in Sources */,
+				A6000001000F0007 /* UserProfileRepository.swift in Sources */,
+				A6000001000F0009 /* StatisticsRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +490,7 @@
 			files = (
 				A3000001000F0005 /* MorseAlphabetTests.swift in Sources */,
 				A4000001000F0007 /* MorseInputEngineTests.swift in Sources */,
+				A6000001000F000B /* RepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
