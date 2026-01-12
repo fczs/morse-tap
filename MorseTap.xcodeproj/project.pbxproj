@@ -29,6 +29,10 @@
 		A3000001000F0001 /* MorseSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000001000F0002 /* MorseSymbol.swift */; };
 		A3000001000F0003 /* MorseAlphabet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000001000F0004 /* MorseAlphabet.swift */; };
 		A3000001000F0005 /* MorseAlphabetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3000001000F0006 /* MorseAlphabetTests.swift */; };
+		A4000001000F0001 /* MorseInputEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4000001000F0002 /* MorseInputEvent.swift */; };
+		A4000001000F0003 /* MorseTimingConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4000001000F0004 /* MorseTimingConfig.swift */; };
+		A4000001000F0005 /* MorseInputEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4000001000F0006 /* MorseInputEngine.swift */; };
+		A4000001000F0007 /* MorseInputEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4000001000F0008 /* MorseInputEngineTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,10 @@
 		A3000001000F0004 /* MorseAlphabet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseAlphabet.swift; sourceTree = "<group>"; };
 		A3000001000F0006 /* MorseAlphabetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseAlphabetTests.swift; sourceTree = "<group>"; };
 		A3000001000F0008 /* MorseTapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MorseTapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4000001000F0002 /* MorseInputEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseInputEvent.swift; sourceTree = "<group>"; };
+		A4000001000F0004 /* MorseTimingConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseTimingConfig.swift; sourceTree = "<group>"; };
+		A4000001000F0006 /* MorseInputEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseInputEngine.swift; sourceTree = "<group>"; };
+		A4000001000F0008 /* MorseInputEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorseInputEngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +220,8 @@
 				A2000001000F0008 /* Exercise.swift */,
 				A2000001000F000A /* Statistics.swift */,
 				A3000001000F0002 /* MorseSymbol.swift */,
+				A4000001000F0002 /* MorseInputEvent.swift */,
+				A4000001000F0004 /* MorseTimingConfig.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,6 +233,7 @@
 				A2000001000F000E /* ExerciseGenerating.swift */,
 				A2000001000F0010 /* ProgressTracking.swift */,
 				A3000001000F0004 /* MorseAlphabet.swift */,
+				A4000001000F0006 /* MorseInputEngine.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -296,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				A3000001000F0006 /* MorseAlphabetTests.swift */,
+				A4000001000F0008 /* MorseInputEngineTests.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -419,6 +431,9 @@
 				A2000001000F0017 /* SettingsViewModel.swift in Sources */,
 				A3000001000F0001 /* MorseSymbol.swift in Sources */,
 				A3000001000F0003 /* MorseAlphabet.swift in Sources */,
+				A4000001000F0001 /* MorseInputEvent.swift in Sources */,
+				A4000001000F0003 /* MorseTimingConfig.swift in Sources */,
+				A4000001000F0005 /* MorseInputEngine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3000001000F0005 /* MorseAlphabetTests.swift in Sources */,
+				A4000001000F0007 /* MorseInputEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

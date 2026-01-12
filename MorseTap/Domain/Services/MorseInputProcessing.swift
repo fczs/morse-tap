@@ -1,5 +1,8 @@
 import Foundation
 
+// Note: MorseInputEngine provides more complete functionality including
+// async pause detection and symbol completion. Consider using MorseInputEngine
+// for new implementations.
 protocol MorseInputProcessing {
     /// Converts tap duration to dot or dash
     func processInput(_ duration: TimeInterval) -> MorseSignal
