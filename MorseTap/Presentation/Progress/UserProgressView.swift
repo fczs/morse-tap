@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ProgressView: View {
+struct UserProgressView: View {
     @State private var viewModel = ProgressViewModel()
     
     var body: some View {
@@ -13,5 +13,5 @@ struct ProgressView: View {
 }
 
 #Preview {
-    ProgressView()
+    UserProgressView()
 }

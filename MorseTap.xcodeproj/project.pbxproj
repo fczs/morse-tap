@@ -11,7 +11,7 @@
 		A1000001229F0003 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000001229F0004 /* ContentView.swift */; };
 		A1000001229F0005 /* LearnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000001229F0006 /* LearnView.swift */; };
 		A1000001229F0007 /* PracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000001229F0008 /* PracticeView.swift */; };
-		A1000001229F0009 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000001229F000A /* ProgressView.swift */; };
+		A1000001229F0009 /* UserProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000001229F000A /* UserProgressView.swift */; };
 		A1000001229F000B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1000001229F000C /* SettingsView.swift */; };
 		A1000001229F000D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1000001229F000E /* Assets.xcassets */; };
 		A2000001000F0001 /* MorseSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000001000F0002 /* MorseSignal.swift */; };
@@ -43,6 +43,8 @@
 		A6000001000F0007 /* UserProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F0008 /* UserProfileRepository.swift */; };
 		A6000001000F0009 /* StatisticsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F000A /* StatisticsRepository.swift */; };
 		A6000001000F000B /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6000001000F000C /* RepositoryTests.swift */; };
+		A7000001000F0001 /* SymbolRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7000001000F0002 /* SymbolRowView.swift */; };
+		A7000001000F0003 /* SymbolCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7000001000F0004 /* SymbolCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +62,7 @@
 		A1000001229F0004 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1000001229F0006 /* LearnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnView.swift; sourceTree = "<group>"; };
 		A1000001229F0008 /* PracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeView.swift; sourceTree = "<group>"; };
-		A1000001229F000A /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		A1000001229F000A /* UserProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgressView.swift; sourceTree = "<group>"; };
 		A1000001229F000C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A1000001229F000E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1000001229F0010 /* MorseTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MorseTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,8 @@
 		A6000001000F0008 /* UserProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRepository.swift; sourceTree = "<group>"; };
 		A6000001000F000A /* StatisticsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsRepository.swift; sourceTree = "<group>"; };
 		A6000001000F000C /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
+		A7000001000F0002 /* SymbolRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolRowView.swift; sourceTree = "<group>"; };
+		A7000001000F0004 /* SymbolCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 			children = (
 				A1000001229F0006 /* LearnView.swift */,
 				A2000001000F0012 /* LearnViewModel.swift */,
+				A7000001000F0002 /* SymbolRowView.swift */,
+				A7000001000F0004 /* SymbolCardView.swift */,
 			);
 			path = Learn;
 			sourceTree = "<group>";
@@ -216,7 +222,7 @@
 		A1000001229F0052 /* Progress */ = {
 			isa = PBXGroup;
 			children = (
-				A1000001229F000A /* ProgressView.swift */,
+				A1000001229F000A /* UserProgressView.swift */,
 				A2000001000F0016 /* ProgressViewModel.swift */,
 			);
 			path = Progress;
@@ -453,7 +459,7 @@
 				A1000001229F0003 /* ContentView.swift in Sources */,
 				A1000001229F0005 /* LearnView.swift in Sources */,
 				A1000001229F0007 /* PracticeView.swift in Sources */,
-				A1000001229F0009 /* ProgressView.swift in Sources */,
+				A1000001229F0009 /* UserProgressView.swift in Sources */,
 				A1000001229F000B /* SettingsView.swift in Sources */,
 				A2000001000F0001 /* MorseSignal.swift in Sources */,
 				A2000001000F0003 /* ExerciseMode.swift in Sources */,
@@ -481,6 +487,8 @@
 				A6000001000F0005 /* ExerciseStatisticsModel.swift in Sources */,
 				A6000001000F0007 /* UserProfileRepository.swift in Sources */,
 				A6000001000F0009 /* StatisticsRepository.swift in Sources */,
+				A7000001000F0001 /* SymbolRowView.swift in Sources */,
+				A7000001000F0003 /* SymbolCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

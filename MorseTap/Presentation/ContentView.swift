@@ -13,7 +13,7 @@ struct ContentView: View {
                     Label("Practice", systemImage: "hand.tap.fill")
                 }
 
-            ProgressView()
+            UserProgressView()
                 .tabItem {
                     Label("Progress", systemImage: "chart.bar.fill")
                 }
