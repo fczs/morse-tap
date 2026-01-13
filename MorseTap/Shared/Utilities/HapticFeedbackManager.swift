@@ -30,4 +30,9 @@ final class HapticFeedbackManager {
         guard isEnabled else { return }
         notificationGenerator.notificationOccurred(.error)
     }
+    
+    func successFeedback() {
+        guard isEnabled else { return }
+        notificationGenerator.notificationOccurred(.success)
+    }
 }
