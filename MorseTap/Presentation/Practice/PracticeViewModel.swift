@@ -2,5 +2,14 @@ import Foundation
 
 @Observable
 final class PracticeViewModel {
-    // Placeholder for future exercise management
+    
+    var availableModes: [ExerciseMode] {
+        ExerciseMode.allCases
+    }
+    
+    var selectedMode: ExerciseMode?
+    
+    func selectMode(_ mode: ExerciseMode) {
+        selectedMode = mode
+    }
 }
