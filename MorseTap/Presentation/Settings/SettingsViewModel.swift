@@ -1,6 +1,16 @@
 import Foundation
 
 @Observable
+@MainActor
 final class SettingsViewModel {
-    // Placeholder for future settings management
+    
+    let settingsStore: SettingsStore
+    
+    init(settingsStore: SettingsStore) {
+        self.settingsStore = settingsStore
+    }
+    
+    func resetToDefaults() {
+        settingsStore.resetToDefaults()
+    }
 }

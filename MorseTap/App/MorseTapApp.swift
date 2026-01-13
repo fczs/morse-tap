@@ -4,6 +4,8 @@ import SwiftData
 @main
 struct MorseTapApp: App {
     
+    @State private var settingsStore = SettingsStore()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             UserProfileModel.self,
@@ -25,6 +27,7 @@ struct MorseTapApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(settingsStore)
         }
         .modelContainer(sharedModelContainer)
     }
