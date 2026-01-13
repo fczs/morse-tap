@@ -1,7 +1,9 @@
 import SwiftUI
+import SwiftData
 
 struct PracticeView: View {
     @State private var viewModel = PracticeViewModel()
+    @Environment(\.modelContext) private var modelContext
     
     var body: some View {
         NavigationStack {
@@ -14,7 +16,10 @@ struct PracticeView: View {
             }
             .navigationTitle("Practice")
             .navigationDestination(item: $viewModel.selectedMode) { mode in
-                ExerciseView(mode: mode)
+                ExerciseView(
+                    mode: mode,
+                    statisticsRepository: StatisticsRepository(modelContext: modelContext)
+                )
             }
         }
     }
@@ -45,4 +50,8 @@ struct ExerciseModeRow: View {
 
 #Preview {
     PracticeView()
+        .modelContainer(for: [
+            SymbolStatisticsModel.self,
+            ExerciseStatisticsModel.self
+        ], inMemory: true)
 }
