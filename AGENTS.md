@@ -13,7 +13,7 @@ iOS application for learning and practicing Morse code. The core feature is Mors
 - **Concurrency:** Swift Concurrency (`async/await`)
 - **State Management:** SwiftUI (`@State`, `@Observable`, `@Environment`)
 - **Data Storage:**
-  - UserDefaults — user settings
+  - UserDefaults — user settings (`SettingsStore`)
   - SwiftData — learning progress and statistics
 
 ## Architecture & Layers
@@ -52,31 +52,40 @@ MorseTap/
 
 ### Presentation Layer
 
-- `Learn/` — Symbol list and symbol card screens for learning the alphabet.
-- `Practice/` — Exercise selection and exercise execution screens.
-- `Progress/` — Statistics dashboard showing learning progress.
-- `Settings/` — App configuration (timings, sound, vibration, difficulty).
+- `Learn/` — Symbol list screen (`LearnView`) and symbol card screen (`SymbolCardView`) for learning the alphabet. Includes input validation and statistics recording.
+- `Practice/` — Exercise selection and exercise execution screens (placeholder).
+- `Progress/` — Statistics dashboard showing learning progress (placeholder).
+- `Settings/` — App configuration (`SettingsView`): timing thresholds, sound, vibration, difficulty level.
 
 ### Domain Layer
 
-- `MorseCodeService` — Core Morse code logic (encoding/decoding, validation).
-- `ExerciseGenerator` — Generates exercises based on difficulty and progress.
-- `InputProcessor` — Processes user tap input into dots/dashes/symbols.
-- `StatisticsService` — Tracks and calculates learning statistics.
+- `MorseAlphabet` — Morse alphabet data (A-Z, 0-9), symbol lookup, encoding/decoding text to/from Morse patterns.
+- `MorseInputEngine` — Processes press events into dot/dash signals, detects symbol completion via pause, supports reset and delete operations.
+- `ExerciseGenerating` (protocol) — Generates exercises based on difficulty and progress.
+- `ProgressTracking` (protocol) — Tracks and calculates learning statistics.
+
+### Domain Models
+
+- `MorseSymbol` — Character + Morse pattern + computed signals array.
+- `MorseSignal` — Enum: `.dot`, `.dash`.
+- `MorseInputEvent` — Enum: `.pressDown(timestamp)`, `.pressUp(timestamp)`.
+- `MorseTimingConfig` — Configurable timing thresholds for signal classification.
+- `Difficulty` — Enum with timing multipliers (beginner/intermediate/advanced).
+- `Exercise`, `ExerciseMode`, `Statistics` — Exercise and statistics models.
 
 ### Data Layer
 
-- `UserSettingsRepository` — UserDefaults-based settings storage.
-- `ProgressRepository` — SwiftData-based progress and statistics storage.
-- `SymbolStatistics` — Per-symbol learning statistics model.
-- `UserProfile` — User profile and streak tracking model.
+- `SettingsStore` — UserDefaults-backed observable settings (timing, feedback, difficulty).
+- `StatisticsRepository` — SwiftData-based symbol and exercise statistics storage.
+- `UserProfileRepository` — SwiftData-based user profile and streak tracking.
+- `SymbolStatisticsModel`, `ExerciseStatisticsModel`, `UserProfileModel` — SwiftData models.
 
 ### Shared Components
 
-- `MorseInputButton` — Universal large circular button for Morse input.
-- `MorseCodeDisplay` — Visual representation of dots and dashes.
-- `HapticFeedbackManager` — Haptic feedback for input confirmation.
-- `SoundManager` — Audio feedback for Morse signals.
+- `MorseInputButton` — Large circular button for Morse input with press/release detection.
+- `MorseSignalsView` — Visual representation of dots and dashes (animated).
+- `MorseInputView` — Composite component: button + signals display + engine integration.
+- `HapticFeedbackManager` — Haptic feedback for signals, symbol completion, success/error.
 
 ## Navigation Structure
 
