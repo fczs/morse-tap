@@ -109,16 +109,27 @@ struct ExerciseView: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             
+            if mode.isCodeInput {
+                morseInputSection(viewModel: viewModel)
+            } else {
+                keyboardInputSection(viewModel: viewModel)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func keyboardInputSection(viewModel: ExerciseViewModel) -> some View {
+        VStack(spacing: 16) {
             TextField(
-                mode.isCodeInput ? "Enter Morse code..." : "Enter text...",
+                "Type the decoded text...",
                 text: Binding(
                     get: { viewModel.userAnswer },
                     set: { viewModel.userAnswer = $0 }
                 )
             )
-            .font(mode.isCodeInput ? .body.monospaced() : .body)
+            .font(.body)
             .textFieldStyle(.roundedBorder)
-            .textInputAutocapitalization(mode.isCodeInput ? .never : .characters)
+            .textInputAutocapitalization(.characters)
             .autocorrectionDisabled()
             .disabled(viewModel.isShowingResult)
             .focused($isInputFocused)
@@ -127,7 +138,98 @@ struct ExerciseView: View {
                     isInputFocused = true
                 }
             }
+            
+            if !viewModel.userAnswer.isEmpty && !viewModel.isShowingResult {
+                Button {
+                    viewModel.clearTypedAnswer()
+                } label: {
+                    Label("Clear", systemImage: "xmark.circle")
+                        .font(.callout)
+                }
+                .buttonStyle(.bordered)
+                .foregroundStyle(.secondary)
+            }
         }
+    }
+    
+    @ViewBuilder
+    private func morseInputSection(viewModel: ExerciseViewModel) -> some View {
+        VStack(spacing: 24) {
+            answerPreview(viewModel: viewModel)
+            
+            if !viewModel.isShowingResult {
+                MorseInputButton(
+                    onPressDown: { viewModel.handlePressDown() },
+                    onPressUp: { viewModel.handlePressUp() }
+                )
+                
+                actionButtons(viewModel: viewModel)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func answerPreview(viewModel: ExerciseViewModel) -> some View {
+        HStack(spacing: 0) {
+            Text(viewModel.morseAnswerText)
+                .font(.title2.monospaced())
+                .fontWeight(.medium)
+            
+            if !viewModel.pendingPattern.isEmpty {
+                Text(viewModel.pendingPattern)
+                    .font(.title2.monospaced())
+                    .fontWeight(.medium)
+                    .foregroundStyle(.orange)
+            }
+            
+            if viewModel.displayAnswer.isEmpty {
+                Text("...")
+                    .font(.title2.monospaced())
+                    .fontWeight(.medium)
+                    .foregroundStyle(.tertiary)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(minHeight: 44)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(.quaternary)
+        )
+        .animation(.easeOut(duration: 0.1), value: viewModel.displayAnswer)
+    }
+    
+    @ViewBuilder
+    private func actionButtons(viewModel: ExerciseViewModel) -> some View {
+        HStack(spacing: 16) {
+            Button {
+                viewModel.deleteLastSignal()
+            } label: {
+                Label("Delete", systemImage: "delete.left")
+                    .font(.callout)
+            }
+            .buttonStyle(.bordered)
+            .disabled(viewModel.displayAnswer.isEmpty)
+            
+            Button {
+                viewModel.insertSpace()
+            } label: {
+                Label("Space", systemImage: "space")
+                    .font(.callout)
+            }
+            .buttonStyle(.bordered)
+            
+            Button {
+                viewModel.clearMorseAnswer()
+            } label: {
+                Label("Clear", systemImage: "trash")
+                    .font(.callout)
+            }
+            .buttonStyle(.bordered)
+            .disabled(viewModel.displayAnswer.isEmpty)
+        }
+        .foregroundStyle(.secondary)
     }
     
     @ViewBuilder
@@ -167,7 +269,7 @@ struct ExerciseView: View {
                                 .foregroundStyle(.secondary)
                             
                             Text(result.expected)
-                                .font(mode.isCodeInput ? .body : .body.monospaced())
+                                .font(mode.isCodeInput ? .body.monospaced() : .body)
                                 .fontWeight(.medium)
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 8)
@@ -183,7 +285,9 @@ struct ExerciseView: View {
             
             Button {
                 viewModel.proceedToNext()
-                isInputFocused = true
+                if !mode.isCodeInput {
+                    isInputFocused = true
+                }
             } label: {
                 Text("Next")
                     .font(.headline)
@@ -254,8 +358,8 @@ struct ExerciseView: View {
     }
 }
 
-#Preview("Session Complete") {
+#Preview("Sentence to Code") {
     NavigationStack {
-        ExerciseView(mode: .codeToWord)
+        ExerciseView(mode: .sentenceToCode)
     }
 }

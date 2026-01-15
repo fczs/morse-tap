@@ -54,6 +54,7 @@
 		A9000001000F0009 /* ExerciseValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9000001000F000A /* ExerciseValidatorTests.swift */; };
 		AA000001000F0001 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000001000F0002 /* ExerciseView.swift */; };
 		AB000001000F0001 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000001000F0002 /* ExerciseViewModel.swift */; };
+		AC000001000F0001 /* MorseSignal+Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC000001000F0002 /* MorseSignal+Pattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		A9000001000F000A /* ExerciseValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseValidatorTests.swift; sourceTree = "<group>"; };
 		AA000001000F0002 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		AB000001000F0002 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
+		AC000001000F0002 /* MorseSignal+Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MorseSignal+Pattern.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +337,7 @@
 		A1000001229F0081 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AC000001000F0002 /* MorseSignal+Pattern.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				A9000001000F0005 /* ExerciseValidator.swift in Sources */,
 				AA000001000F0001 /* ExerciseView.swift in Sources */,
 				AB000001000F0001 /* ExerciseViewModel.swift in Sources */,
+				AC000001000F0001 /* MorseSignal+Pattern.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
