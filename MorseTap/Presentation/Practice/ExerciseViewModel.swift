@@ -56,7 +56,7 @@ final class ExerciseViewModel {
     }
     
     var currentAnswer: String {
-        mode.isCodeInput ? morseAnswerText : userAnswer
+        mode.isCodeInput ? encodeMorseAnswer() : userAnswer
     }
     
     var canSubmit: Bool {
@@ -122,6 +122,16 @@ final class ExerciseViewModel {
         pendingSignals = []
         cancelPendingCompletion()
         loadExercise()
+    }
+    
+    private func encodeMorseAnswer() -> String {
+        let words = morseAnswerText.split(separator: " ")
+        let encodedWords = words.map { word -> String in
+            word.compactMap { char -> String? in
+                alphabet.symbol(for: char)?.pattern
+            }.joined(separator: " ")
+        }
+        return encodedWords.joined(separator: " / ")
     }
     
     // MARK: - Morse Input Handling (Direct Button Control)
