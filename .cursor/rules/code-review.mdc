@@ -1,0 +1,70 @@
+---
+description: Code review guidelines for MorseTap (Swift/SwiftUI)
+globs:
+  - MorseTap/**/*.swift
+  - MorseTapTests/**/*.swift
+alwaysApply: false
+---
+
+# Code Review Guidelines — MorseTap
+
+## Quick references
+
+| What | Where |
+| --- | --- |
+| Project architecture | `AGENTS.md` |
+| App target | `MorseTap/` |
+| Tests | `MorseTapTests/` |
+| Cursor review command | `.cursor/commands/review-changes-with-severity.md` |
+
+## Clean code essentials (Swift)
+
+- **Naming**: Use Swift API design guidelines; avoid unclear abbreviations.
+- **Immutability**: Prefer `let`; keep state localized and minimal.
+- **Access control**: Keep types/members as narrow as possible (`private`, `fileprivate`) unless part of a public module API.
+- **Small units**: Functions should do one thing; extract pure helpers when logic becomes branching-heavy.
+- **No magic values**: Extract timing thresholds/UX constants to named constants or config types (e.g., `MorseTimingConfig`).
+- **Error handling**: Prefer `throws` / typed results; do not silently ignore failures.
+- **No dead code**: Remove unused imports, variables, and stale paths.
+- **Clarity over cleverness**: Avoid tricky control flow; prefer early exits (`guard`) to deep nesting.
+
+## Architecture & boundaries (Clean Architecture + MVVM)
+
+- **Views** (`MorseTap/Presentation/**`): UI only. No business rules, no data persistence, no Morse classification logic.
+- **ViewModels**: Presentation logic only; orchestrate Domain/Data dependencies; keep `@MainActor` boundaries explicit where UI state is mutated.
+- **Domain** (`MorseTap/Domain/**`): Business logic, protocols, and services. Keep it UI-agnostic.
+- **Data** (`MorseTap/Data/**`): SwiftData/UserDefaults repositories and models; keep mapping/storage concerns out of Views/ViewModels.
+- **Shared** (`MorseTap/Shared/**`): Reusable components/utilities/extensions; avoid app-specific coupling.
+
+## Concurrency & performance (Swift Concurrency)
+
+- **Main thread**: No heavy work on the main actor (encoding/decoding, large SwiftData fetches, sorting big arrays).
+- **Task usage**: Use `Task {}` / `.task` intentionally; avoid creating unbounded tasks or task leaks.
+- **Cancellation**: Long-running tasks should honor cancellation when reasonable (`Task.checkCancellation()` or `try Task.checkCancellation()`).
+- **Sendability**: Avoid passing non-thread-safe state across tasks; keep SwiftData `ModelContext` usage on appropriate actor.
+- **Race conditions**: Review state updates for ordering issues (especially around input timing and symbol completion).
+
+## SwiftUI specifics
+
+- **State ownership**: Ensure `@State`, `@StateObject`/observable state, and `@Environment` are used correctly; avoid state duplication.
+- **Navigation**: Validate `NavigationStack` destinations are stable and bindings are safe.
+- **Previews**: New/changed Views should have working `#Preview` with minimal dependencies (use in-memory SwiftData containers where needed).
+- **Accessibility**: Check tappable targets, labels, Dynamic Type friendliness, and contrast where applicable.
+
+## Data & persistence (SwiftData / UserDefaults)
+
+- **SwiftData fetches**: Ensure predicates/sorts are reasonable; avoid fetching more than needed.
+- **Repository boundaries**: Persisting statistics/profiles should go through repositories, not directly from Views.
+- **Defaults**: Settings should remain in `SettingsStore` and not be scattered.
+
+## Security & privacy (mobile)
+
+- **Sensitive data**: No logging of user input/content that could be considered sensitive; keep diagnostics minimal and removable.
+- **Local-only**: App must work offline; avoid accidental network dependencies.
+
+## Review checklist (minimum)
+
+- Code compiles, warnings reviewed, and changes follow `AGENTS.md` rules.
+- New/modified Views have working previews (or explicitly justify why not possible).
+- MVVM boundaries are respected; no Domain/Data logic leaks into Views.
+- Concurrency usage is correct (`@MainActor` where appropriate; no blocking UI).

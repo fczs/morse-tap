@@ -1,6 +1,6 @@
-﻿---
+---
 description: Rules for writing task prompts in docs/task-prompt
-globs:
+globs: docs/task-prompt/**
 alwaysApply: false
 ---
 
@@ -15,7 +15,7 @@ The rules below apply only when preparing docs/task-prompt.
 - Changing the order of sections is forbidden; every section is required.
 
 1. H1 title — reflects the essence of the proposed changes.
-2. Affected modules — list relative paths, components, and types in backticks (MorseCode/...).
+2. Affected modules — list relative paths, components, and types in backticks (MorseTap/...).
 3. Goal — 1–2 sentences describing the task and the expected effect.
 4. Dependencies — list related tasks, branches, or blocking changes.
 5. Execution plan — a mandatory TODO list with a strict step order for AI: (1) implement the requested changes; (2) type checks and build verification; (3) post-implementation verification; (4) quality checks; (5) documentation update; (6) finalization.
@@ -116,7 +116,7 @@ The rules below apply only when preparing docs/task-prompt.
 - The execution plan covers the full cycle: preparation → implementation → type checks → post-implementation verification → quality → documentation → finalization.
 - Block requirements list all affected iOS layers/modules and include Refactoring, NFRs blocks.
 - Swift type checking is included in the plan; SwiftLint is run.
-- All paths (MorseCode/...) are correctly formatted, there is no duplication, and if there are no changes, No changes. is used.
+- All paths (MorseTap/...) are correctly formatted, there is no duplication, and if there are no changes, No changes. is used.
 
 ### Reviewer checklist
 

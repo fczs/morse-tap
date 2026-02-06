@@ -1,75 +1,45 @@
 # verify-agents
 
-You are an AI coding agent in the repository.
+---
 
-Goal: eliminate inconsistencies between the contents of `AGENTS.md` files and the actual project structure (Clean Architecture layers).
+## description: Verify and sync AGENTS.md files (MorseTap)
 
-Files you are allowed to edit (only these):
+Read @.cursor/rules/agents.mdc and @AGENTS.md for context.
 
-- AGENTS.md
-- MorseCode/Presentation/AGENTS.md
-- MorseCode/Domain/AGENTS.md
-- MorseCode/Data/AGENTS.md
-- MorseCode/Shared/AGENTS.md
+## Instructions
 
-Hard rules:
+1. **Discovery**: Find all existing `AGENTS.md` files dynamically:
+   - Root `AGENTS.md`
+   - Module-level `AGENTS.md` under `MorseTap/**/AGENTS.md`
+   - Do not create new markdown files during verification; only review/edit files that already exist.
 
-- Do NOT create new markdown files. Only edit the existing `AGENTS.md` files above.
-- Do NOT change application code, configs, tests, or scripts — documentation sync only.
-- Before any edits, describe:
-  - which of the allowed files you will touch,
-  - what you will change,
-  - why it's needed,
-  - possible side effects.
-    Then ask exactly: "Можно ли выполнить эти действия?" and wait for confirmation. Only then apply changes.
-- Keep edits minimal and factual. Do not invent purposes.
+2. **Find contradictions**: Identify conflicting instructions across `AGENTS.md` files.
+   - Prefer the more specific module-level constraint over the root file.
+   - Prefer `.cursor/rules/*.mdc` for process/format rules.
+   - If the conflict cannot be resolved objectively, ask the user which version to keep.
 
-What counts as an "inconsistency" and how to fix it:
+3. **Verify root `AGENTS.md`**: Check it follows the essentials-only structure from `.cursor/rules/agents.mdc`. Flag violations and propose minimal edits.
 
-1. Root `AGENTS.md`
+4. **Verify module `AGENTS.md` files** (if any exist):
+   - Check the module purpose matches the actual code in that directory.
+   - Remove references to non-existent directories/types.
+   - Ensure “Key types” mention real Swift types by name (Views, ViewModels, services/protocols, repositories, models), without exhaustive file lists.
+   - Ensure dependencies reflect the intended layering (Presentation → Domain protocols → Data repositories).
+   - If purpose is unclear, write: "TODO: describe purpose".
 
-- Verify that links to `MorseCode/*/AGENTS.md` are valid and the target files exist.
-- If the text references directories/tech that no longer exist in the repo, update the wording minimally.
+5. **Cross-check against the MorseTap structure** (when relevant sections exist in the docs):
+   - **Presentation**: validate module coverage under `MorseTap/Presentation/` (e.g., `Learn/`, `Practice/`, `Progress/`, `Settings/`) and the existence of the referenced Views/ViewModels.
+   - **Domain**: validate any listed services against `MorseTap/Domain/Services/` and models against `MorseTap/Domain/Models/`.
+   - **Data**: validate repositories against `MorseTap/Data/Repositories/` and storage models/wrappers against `MorseTap/Data/Storage/`.
+   - **Shared**: validate referenced segments against `MorseTap/Shared/` (e.g., `Components/`, `Extensions/`, `Utilities/`, `Resources/`).
 
-2. `MorseCode/Presentation/AGENTS.md`
+6. **Flag for deletion**: Identify redundant, vague, obvious, or stale content per `.cursor/rules/agents.mdc`.
 
-- Find the module catalog section (markdown table: "Module | Purpose").
-- Build the actual module list from directories inside the Presentation folder:
-  - `MorseCode/Presentation/Learn/`
-  - `MorseCode/Presentation/Practice/`
-  - `MorseCode/Presentation/Progress/`
-  - `MorseCode/Presentation/Settings/`
-    Exclude: `AGENTS.md` itself and any non-directory entries.
-- Compare table rows vs actual directories:
-  - If the table contains a module that doesn't exist on disk — remove that row.
-  - If a directory exists on disk but is missing from the table — add a row.
-- Preserve existing Purpose text as-is.
-- For newly added rows' Purpose:
-  - Infer purpose from folder name + Views + ViewModels.
-  - If still unclear, write: "TODO: describe purpose" (no guessing).
+7. **Before any edits**, describe:
+   - which files you will touch
+   - what you will change
+   - why it's needed
+   - possible side effects
+     Then ask exactly: "May I proceed with these actions?" and wait for confirmation.
 
-3. `MorseCode/Domain/AGENTS.md`
-
-- Compare listed services with actual Swift files inside `MorseCode/Domain/Services/`.
-- Remove rows for missing services; add rows for existing ones that are missing in the table.
-- Preserve existing descriptions.
-
-4. `MorseCode/Data/AGENTS.md`
-
-- Compare listed repositories with actual Swift files inside `MorseCode/Data/Repositories/`.
-- Compare listed storage models with actual Swift files inside `MorseCode/Data/Storage/`.
-- Remove rows for missing items; add rows for existing ones that are missing in the table.
-
-5. `MorseCode/Shared/AGENTS.md`
-
-- In the folder catalog, compare listed folders with actual directories inside `MorseCode/Shared/*`.
-- Remove rows for missing directories; add rows for existing ones that are missing in the table.
-- Preserve existing descriptions.
-- For new folders:
-  - Write a minimal description; if unclear, "TODO: describe folder purpose".
-
-Output after changes:
-
-- Short report:
-  - rows added/removed per `AGENTS.md`,
-  - total mismatches before vs after (must be 0 for directory/file lists).
+8. **Report**: Output a short summary of files found, contradictions, and items added/removed/flagged.

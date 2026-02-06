@@ -1,4 +1,4 @@
-﻿---
+---
 description: Rules for preparing a business meta-prompt for the docs/meta-prompt/ directory
 globs: docs/meta-prompt/**
 alwaysApply: false
@@ -21,7 +21,7 @@ The rules below apply only when preparing documents in the docs/meta-prompt/ dir
 ## Meta-prompt structure (strict order)
 
 1. Goals — 1–3 short items: what we get as an outcome.
-2. Functional requirements — only what changes, structured by layers/modules from AGENTS.md. Start with App (if affected), then Presentation (Learn, Practice, Progress, Settings), Domain (Services, UseCases, Models), Data (Repositories, Storage), and Shared (Components, Utilities); you may add subsections for specific modules, but without technical implementation details.
+2. Functional requirements — only what changes, structured by layers/modules from AGENTS.md. Start with App (if affected), then Presentation (Learn, Practice, Progress, Settings), Domain (Services, Models), Data (Repositories, Storage), and Shared (Components, Extensions, Utilities); you may add subsections for specific modules, but without technical implementation details.
 3. Out-of-scope — what we definitely do not touch (layers, modules, screens).
 4. Affected layers and modules — status for each item from the root AGENTS.md: Yes/No/Unknown. Build the list dynamically.
 5. Dependencies and artifacts — links to requirements, design files, TECH_SPEC.md sections. No retelling, only a list.
@@ -95,11 +95,12 @@ The rules below apply only when preparing documents in the docs/meta-prompt/ dir
 - Presentation/Practice: <Yes/No/Unknown>
 - Presentation/Progress: <Yes/No/Unknown>
 - Presentation/Settings: <Yes/No/Unknown>
+- Domain/Models: <Yes/No/Unknown>
 - Domain/Services: <Yes/No/Unknown>
-- Domain/UseCases: <Yes/No/Unknown>
 - Data/Repositories: <Yes/No/Unknown>
 - Data/Storage: <Yes/No/Unknown>
 - Shared/Components: <Yes/No/Unknown>
+- Shared/Extensions: <Yes/No/Unknown>
 - Shared/Utilities: <Yes/No/Unknown>
 
 ## Dependencies and artifacts

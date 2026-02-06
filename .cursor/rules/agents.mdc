@@ -1,0 +1,66 @@
+---
+description: Rules for creating and maintaining AGENTS.md files (MorseTap / iOS SwiftUI)
+globs:
+  - AGENTS.md
+  - MorseTap/**/AGENTS.md
+alwaysApply: false
+---
+
+The rules below apply when creating or editing AGENTS.md files.
+
+## Progressive Disclosure Principles
+
+Every token in AGENTS.md loads on every request. Keep files minimal and focused:
+
+- **Root AGENTS.md essentials only**: one-sentence app description, platform/runtime constraints (iOS version), tech stack summary, non-standard build/typecheck commands (if any), key directory overview, "Important for AI" constraints.
+- **Details live elsewhere**: prefer linking to `.cursor/rules/*.mdc` and module-level `AGENTS.md` for anything that is likely to change.
+- **Avoid detailed file listings**: they go stale quickly; describe responsibilities and public entry points instead.
+- **No redundant instructions**: do not restate generic guidelines ("clean code", "best practices") that are not project-specific.
+
+## Root AGENTS.md Structure
+
+Root file should contain ONLY:
+
+- One-sentence project description
+- Platform/runtime constraints (e.g., iOS deployment target)
+- Non-standard build/typecheck commands (if any; otherwise omit)
+- Tech stack summary (Swift, SwiftUI, Swift Concurrency; storage: SwiftData/UserDefaults; architecture: MVVM + Clean Architecture)
+- Key directories (brief; e.g., `MorseTap/`, `MorseTapTests/`, `docs/`, `.cursor/`)
+- Links to detailed docs (`.cursor/rules/`, module `AGENTS.md` when they exist)
+- Important for AI section (communication language, key constraints like MVVM boundaries and offline-first)
+
+## Module AGENTS.md Structure (MorseTap)
+
+Module `AGENTS.md` files are used to document project-specific constraints for the corresponding layer/module. Preferred locations:
+
+- `MorseTap/Presentation/<Module>/AGENTS.md` (e.g., Learn/Practice/Progress/Settings)
+- `MorseTap/Domain/AGENTS.md` (Domain-wide rules, service catalog conventions)
+- `MorseTap/Data/AGENTS.md` (repository/storage conventions)
+- `MorseTap/Shared/AGENTS.md` (shared component/utilities conventions)
+
+Each module AGENTS.md should contain:
+
+- Module purpose (1-2 sentences)
+- Key types (Views, ViewModels, Domain services, repositories, models) by **name** (avoid exhaustive file lists)
+- Public entry points and responsibilities (e.g., which View is the primary screen; which service protocol is the primary interface)
+- Dependencies on other layers/modules (e.g., Presentation depends on Domain protocols; Data implements repositories)
+- Module-specific constraints/patterns (e.g., required SwiftUI previews, `@MainActor` expectations, SwiftData usage rules)
+
+## What to Avoid
+
+Flag for removal or don't add:
+
+- **Detailed file structure listings**: stale quickly, agent can discover via tools
+- **Irrelevant ecosystem assumptions**: web/backend-specific items (npm, TypeScript, NestJS, endpoints/queue jobs) unless the iOS project actually contains them
+- **Overly verbose descriptions**: keep it brief
+- **Redundant instructions**: already covered elsewhere
+- **Too vague instructions**: not actionable
+- **Obvious statements**: like "write clean code" or "follow best practices"
+
+## Instruction Budget
+
+Frontier LLMs can follow ~150-200 instructions with reasonable consistency. Every instruction competes for attention. Prioritize:
+
+1. Project-specific knowledge the agent cannot infer
+2. Architectural decisions and constraints
+3. Domain terminology that differs from common usage
